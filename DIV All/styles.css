@@ -1,10 +1,34 @@
 body {
     display: flex;
+    background-color: lightgray;
 }
 
 #navBar {
+    position: fixed;
+    top: 50;
     height: 100%;
-    width: 100px;
+    width: 250px;
     background-color: thistle;
+}
+
+#navBar div {
+    text-align: center;
+    height: 30px;
+    border-bottom: dotted;
+}
+
+#myHeader {
+    height: 50px;
+    width: 100%;
+    background-color: gray;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     
+}
+
+#myHeader h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: thistle;
 }

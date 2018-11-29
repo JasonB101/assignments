@@ -1,0 +1,12 @@
+{
+  "name": "daily-planet-editor",
+  "version": "1.0.0",
+  "description": "This is the file associated with the Daily Planet Editor project, which can be found at [coursework.vschool.io/daily-planet-editor/](http://coursework.vschool.io/daily-planet-editor/)",
+  "main": "paper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

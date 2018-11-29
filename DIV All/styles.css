@@ -1,0 +1,10 @@
+body {
+    display: flex;
+}
+
+#navBar {
+    height: 100%;
+    width: 100px;
+    background-color: thistle;
+    
+}

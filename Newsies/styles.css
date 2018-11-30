@@ -1,0 +1,76 @@
+body {
+    background-color: lightgray;
+}
+#Header {
+    background-color: lightgray;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h1 {
+    font-size: 80px;
+    margin: 10px;
+}
+
+h2 {
+    font-size: 80px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+    
+}
+
+h3 {
+    width: 100%;
+    text-align: center;
+    height: 25px;
+    border-bottom-style: dotted;
+
+}
+#dateBox {
+    padding-left: 10px;
+    height: 50px;
+    background-color: lightgray;
+    border-top-style: solid;
+    border-bottom-style: dotted;
+}
+
+#topStory{
+    text-align: center;
+}
+
+
+
+#topPic{
+    height: 300px;
+}
+
+.flexed {
+    display: flex;
+}
+
+
+.flexed > div {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#classifieds {
+    width:500px;
+    border-style: solid;
+    float: left;
+    margin-left: 10px;
+}
+
+#classifieds > div > div {
+    background-color: pink;
+    height: 200px;
+    width: 200px;
+    margin: 5px;
+}
+
+#theTable {
+    display: table-row;
+    width: 100%;
+}

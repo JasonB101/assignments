@@ -1,49 +1,92 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
 body {
-    background-color: lightgray;
-}
-#Header {
-    background-color: lightgray;
-    height: 100px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-h1 {
-    font-size: 80px;
-    margin: 10px;
+    background-image: url("http://retti.us/wp-content/uploads/2018/10/35-white-paper-textures-hq-freecreatives-newspaper-texture-background-2018.jpg")
 }
 
-h2 {
-    font-size: 80px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
-    
-}
-
-h3 {
-    width: 100%;
-    text-align: center;
-    height: 25px;
-    border-bottom-style: dotted;
-
-}
 #dateBox {
     padding-left: 10px;
     height: 50px;
-    background-color: lightgray;
     border-top-style: solid;
     border-bottom-style: dotted;
 }
 
-#topStory{
-    text-align: center;
+.verticalCenter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+h1 {
+    font-size: 80px;
+    margin: 10px;
+    text-align: center;
+    white-space: nowrap;
+}
 
+h2 {
+    height: 100px;
+    font-size: 80px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    white-space: nowrap;
+}
 
-#topPic{
-    height: 300px;
+h3 {
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    white-space: nowrap;
+}
+
+h4 {
+    text-align: center;
+    display: inline-block;
+    margin-left: 3px;
+}
+
+h5 {
+    display: inline-block;
+}
+
+#h3Div {
+    height: 10%;
+    margin-bottom: 2px;
+}
+
+.classBox {
+    overflow: hidden;
+    padding: 15px;
+    border: 1px dotted black;
+    margin: -2px;
+    display: inline-block;
+    height: 30%;
+    width: 50%;
+}
+
+.classImg {
+    float: left;
+    width: 60%;
+    filter: grayscale(100%);
+}
+
+.classP {
+    display: inline-block;
+    margin-left: 3px;
+    font-size: 14px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+i {
+    display: block;
+}
+
+#topPic {
+
+    float: left;
+    height: 80%;
 }
 
 .flexed {
@@ -51,26 +94,20 @@ h3 {
 }
 
 
-.flexed > div {
+.flexed>div {
     margin-right: auto;
     margin-left: auto;
 }
 
 #classifieds {
-    width:500px;
+    width: 35%;
+    height: 400px;
     border-style: solid;
     float: left;
     margin-left: 10px;
+    padding-left: 3px;
 }
 
-#classifieds > div > div {
-    background-color: pink;
-    height: 200px;
-    width: 200px;
-    margin: 5px;
-}
-
-#theTable {
-    display: table-row;
-    width: 100%;
+#storyBox {
+    width: 60%;
 }

@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+    margin: -2px;
+}
+ body {
+     background-color: lightgray;
+ }
+
+.flag {
+    position: relative;
+    transform: translateX(-50%);
+    margin: 100px 0;
+    left: 50%;
+    width: 600px;
+    height: 400px;
+}
+
+.W33 {
+    display: inline-block;
+    width: 33.33%
+}
+
+.H100 {
+    display: inline-block;
+    height: 100%;
+}
+
+.H50{
+    height: 50%;
+}
+.W100 {
+    display: inline-block;
+    width: 100%
+}
+
+.H33 {
+    display: inline-block;
+    height: 33.33%;
+}
+
+.red {
+    background-color: red;
+}
+
+.white {
+    background-color: white;
+
+}
+
+.blue {
+    background-color: blue;
+
+}
+
+.black {
+    background-color: black;
+}
+
+.yellow {
+    background-color: yellow;
+}
+.green {
+    background-color: green;
+}
+
+.absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+}

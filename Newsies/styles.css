@@ -50,6 +50,7 @@ h4 {
 h5 {
     font-size: 24px;
     display: inline-block;
+    margin-bottom: 10px;
 }
 
 #h3Div {
@@ -128,4 +129,8 @@ i {
     height: 100%;
     margin-left: 5px;
 
+}
+
+.pp {
+    text-indent: 15px;
 }

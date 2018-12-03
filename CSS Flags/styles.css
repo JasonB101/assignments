@@ -2,9 +2,12 @@
     box-sizing: border-box;
     margin: -2px;
 }
- body {
-     background-color: lightgray;
- }
+
+body {
+    background-color: lightgray;
+}
+
+
 
 .flag {
     position: relative;
@@ -15,28 +18,46 @@
     height: 400px;
 }
 
+.W25 {
+    width: 25%;
+}
+
 .W33 {
-    display: inline-block;
-    width: 33.33%
+    width: 33.33%;
+
+}
+
+.W66 {
+    width: 66.66%;
+}
+
+.W100 {
+    width: 100%;
+}
+.H25 {
+    height:25%;
+}
+.H33 {
+    height: 33.33%;
+}
+
+.H50 {
+    height: 50%;
+}
+
+.H66 {
+    height: 66.66%;
 }
 
 .H100 {
-    display: inline-block;
     height: 100%;
 }
 
-.H50{
-    height: 50%;
-}
-.W100 {
-    display: inline-block;
-    width: 100%
+square20 {
+    width: 20%;
+    height: 20%;
 }
 
-.H33 {
-    display: inline-block;
-    height: 33.33%;
-}
 
 .red {
     background-color: red;
@@ -59,8 +80,34 @@
 .yellow {
     background-color: yellow;
 }
+
 .green {
     background-color: green;
+}
+
+
+
+.displayIB {
+    display: inline-block;
+}
+
+.centerX {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.centerY {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.centerBoth {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .absolute {

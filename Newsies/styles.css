@@ -48,6 +48,7 @@ h4 {
 }
 
 h5 {
+    font-size: 24px;
     display: inline-block;
 }
 
@@ -80,6 +81,7 @@ h5 {
 }
 
 i {
+    width: 100%;
     display: block;
 }
 
@@ -109,5 +111,21 @@ i {
 }
 
 #storyBox {
+    display: flex;
     width: 60%;
+    height: 400px;
+}
+
+.storyB1 {
+    text-align: center;
+    display: inline-block;
+    height: 100%;
+
+}
+
+.storyB2 {
+    display: inline-block;
+    height: 100%;
+    margin-left: 5px;
+
 }

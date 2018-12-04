@@ -5,25 +5,50 @@
 
 body {
     background-color: lightgray;
+    padding-bottom: 50px;
 }
-
+ h2 {
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     margin-top: 150px;
+     margin-bottom: 10px;
+     font-size: 40px;
+     text-align: center;
+ }
 
 
 .flag {
     position: relative;
     transform: translateX(-50%);
-    margin: 100px 0;
     left: 50%;
     width: 600px;
     height: 400px;
 }
 
+.W10 {
+    width: 10%;
+}
+
+.W15 {
+    width: 15%;
+}
+
 .W25 {
     width: 25%;
+}
+.W20 {
+    width: 20%;
 }
 
 .W33 {
     width: 33.33%;
+
+}
+.W40 {
+    width: 40%;
+
+}
+.W50 {
+    width: 50%;
 
 }
 
@@ -34,11 +59,29 @@ body {
 .W100 {
     width: 100%;
 }
-.H25 {
-    height:25%;
+
+.H10 {
+    height: 10%;
 }
+
+.H15 {
+    height: 15%;
+}
+
+.H20 {
+    height: 20%;
+}
+
+.H25 {
+    height: 25%;
+}
+
 .H33 {
     height: 33.33%;
+}
+
+.H40 {
+    height: 40%;
 }
 
 .H50 {
@@ -49,20 +92,31 @@ body {
     height: 66.66%;
 }
 
+.H75 {
+    height: 75%;
+}
+
 .H100 {
     height: 100%;
 }
-
-square20 {
-    width: 20%;
-    height: 20%;
+ .circle33 {
+     padding-top: 33%;
+     height: auto;
+     border-radius: 50%;
+ }
+ .circle25 {
+    padding-top: 25%;
+    height: auto;
+    border-radius: 50%;
 }
-
 
 .red {
     background-color: red;
 }
 
+.orange {
+    background-color: orange;
+}
 .white {
     background-color: white;
 
@@ -81,11 +135,13 @@ square20 {
     background-color: yellow;
 }
 
+.gold {
+    background-color: gold;
+}
+
 .green {
     background-color: green;
 }
-
-
 
 .displayIB {
     display: inline-block;
@@ -110,8 +166,26 @@ square20 {
     transform: translate(-50%, -50%);
 }
 
+.T25 {
+    top: 25%;
+}
+
+.T5 {
+    top: -5%;
+}
+
 .absolute {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+#sweden {
+    width: 80px;
+    left: 33%;
+}
+
+.gambia {
+    border-top: 20px solid white;
+    border-bottom: 20px solid white;
 }

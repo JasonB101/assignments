@@ -9,6 +9,9 @@ return tArr
 addOdds = function(evensOnlyArray){
 var newArr = [];
  for (var i = 0; i < evensOnlyArray.length; i++){
+     if (evensOnlyArray[i] === 2){
+         newArr.push(1);
+     }
      newArr.push(evensOnlyArray[i]+1)
  }
  newArr = newArr.concat(evensOnlyArray);

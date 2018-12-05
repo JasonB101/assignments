@@ -7,7 +7,7 @@ var index = fruit.indexOf("orange");
 fruit.push(index);
 vegetables.push(vegetables.length);
 var food = [];
-var food = food.concat(fruit, vegetables);
+food = food.concat(fruit, vegetables);
 food.splice(4, 2);
 food = food.reverse();
 food.join(", ") ;

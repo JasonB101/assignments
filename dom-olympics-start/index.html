@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>DOM Olympics</title>
+</head>
+<body>
+    <label class="themHeader">Set Theme:</label>
+    <label>Left Side Color  <select id="leftdrop">
+            <option value="brown">Brown</option>    
+            <option value="blue">Blue</option>
+            <option value="gray">Gray</option>
+            <option value="red">Red</option>
+            <option value="pink">Pink</option>
+            <option value="teal">Teal</option>
+            <option value="orange">Orange</option>
+            <option value="sand">Sand</option>
+            <option value="tomato">Tomato</option>
+            <option value="turquoise">Turquoise</option>
+            <option value="green">Green</option>
+    </select></label>
+    <label>Right Side Color  <select id="rightdrop">
+            <option value="brown">Brown</option>
+            <option value="blue">Blue</option>
+            <option value="gray">Gray</option>
+            <option value="red">Red</option>
+            <option value="pink">Pink</option>
+            <option value="teal">Teal</option>
+            <option value="orange">Orange</option>
+            <option value="sand">Sand</option>
+            <option value="tomato">Tomato</option>
+            <option value="turquoise">Turquoise</option>
+            <option value="green">Green</option>
+    </select></label>
+    <div id="main">
+        <button id='clear-button'>clear</button>
+        <div id="messagebox" class="messages">
+            <div class="message left">
+                I have something serious to talk about
+            </div>
+            <div class="message right">
+                I don't want to talk
+            </div>
+            <div class="message left">
+                You have to, you're the police
+            </div>
+            <div class="message right">
+                I'm just a simple farmer
+            </div>
+        </div>
+        <form>
+            <input id="textbox" placeholder="Type message here"/>
+            <button id="submit">Send</button>
+        </form>
+    </div>
+   
+    <script src="index.js"></script>
+</body>
+</html>

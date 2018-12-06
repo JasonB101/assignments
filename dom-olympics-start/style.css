@@ -1,0 +1,81 @@
+.header {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-bottom: 2px dotted black;
+    margin-bottom: 10px;
+}
+
+.name {
+    color: red;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    margin: 10px 0px;
+    padding: 20px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+#main {
+    margin: 30px;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.message {
+    padding: 5px;
+}
+
+.themHeader {
+    font-size: 28px;
+}
+
+.right {
+    padding: 5px;
+    border-radius: 5%;
+    align-self: flex-end;
+}
+
+.left {
+    padding: 5px;
+    border-radius: 5%;
+    align-self: flex-start;
+}
+
+.red {
+    background-color: red;
+}
+.green {
+    background-color: green;
+}
+.gray {
+    background-color: lightgray;
+}
+.blue {
+    background-color: lightblue;
+}
+.brown {
+    background-color: burlywood;
+}
+.pink {
+    background-color: pink;
+}
+.teal {
+    background-color: teal;
+}
+.orange {
+    background-color: orange;
+}
+.sand {
+    background-color: sandybrown;
+}
+.tomato {
+    background-color: tomato;
+}
+.turquoise {
+    background-color: turquoise;
+}

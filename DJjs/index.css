@@ -1,0 +1,8 @@
+#box {
+    border: 2px solid black;
+    max-height: 500px;
+    height: 1000px;
+    width: 500px;
+    margin: auto;
+    overflow: auto;
+}

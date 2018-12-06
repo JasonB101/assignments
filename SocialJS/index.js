@@ -58,13 +58,13 @@ var user = {
 
 function addFriend(){
     var index = user.friends.length - 1;
-    var name = "John"
+    var name = "Kyle"
     var follow = Math.random() >= .5 ? true : false;
     var emails = [];
     for (i = Math.floor(Math.random() * 5); i > -1; i-- ){
         emails.push(Math.floor(Math.random()*200000000) + "@randomlygenerated.com")
     }
-    
+    console.log(emails)
     var newFriend = {
         id: "id" + (Number(user.friends[index - 1].id.substr(2)) + 1),
         name: name,

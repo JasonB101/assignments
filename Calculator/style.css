@@ -1,0 +1,39 @@
+* {
+    box-sizing: border-box;
+}
+
+.textbox {
+    width: 60px;
+    height: 60px;
+    font-size: 45px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    
+}
+.holder {
+    width: 50px;
+    padding: 2px;
+}
+
+.btn {
+    display: block;
+    width: 25px;
+    margin: auto;
+
+}
+label {
+    padding-left: 15px;
+    font-size: 45px;
+}
+ .green {
+     background-color: green;
+ }
+ .red{
+    background-color: red;
+}
+.blue{
+    background-color: blue;
+}

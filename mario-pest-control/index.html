@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Mario Pest Control</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css" />
+    
+</head>
+
+<body>
+    <div class="header descwrapper">
+        <h1>Mario's Pest Control</h1>
+    </div>
+    <div class="wrapper">
+        <form>
+            <div>
+            <h3>Pest Control Calculator</h1>
+        </div>
+            <div class="wrapit">
+            <div class="descwrapper">
+                <div class="descriptionbox">
+                    <h5>Goomba</h5>
+                    <img class="headshot" src="GoombaSM3DWArtwork.png">
+                  </div>
+                <div class="descriptionbox">
+                    <h5>Bob Omb</h5>
+                    <img class="headshot" src="Bob-Omb.png">
+                    </div>
+                <div class="descriptionbox">
+                    <h5>Cheep Cheep</h5>
+                    <img class="headshot" src="Cheep-Cheep_cool.png">
+                    </div>
+            </div>
+            <div class="descwrapper">
+                <div class="descriptionbox">
+                <label class="cost"><img class="coin" src="coin.png">  5</label><br>
+                <p>How Many?</p>
+                <input id="goomba" type="number" placeholder="0">
+                </div>
+                <div class="descriptionbox">
+                <label class="cost"><img class="coin" src="coin.png">  7</label><br>
+                <p>How Many?</p>
+                <input id="bobomb" type="number" placeholder="0">
+                </div>
+                <div class="descriptionbox">
+                <label class="cost"><img class="coin" src="coin.png">  11</label><br>
+                <p>How Many?</p>
+                <input id="cheepcheep" type="number" placeholder="0">
+                </div>
+            </div>
+            <div class="descwrapper-col">
+                <div id="calculate" class="calcButton" type="button">Calculate</div>
+                <div id="reset" class="calcButton" type="button">Reset</div>
+                <h2 id="result">You have eliminated 0 baddies!</h2>
+                <h2 id="amount">You have made 0 coins!</h2>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="footer">
+        <p>mario@nintendo.com</p>
+        <a href="http://www.nintendo.com">http://www.nintendo.com</a>
+        <p>Nintendo of America 4600 150th Ave NE Redmond, WA</p>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.wrapper {
+    width: 75%;
+
+}
+
+.box {
+    display: inline-block;
+    height: 100px;
+    margin: -2px;
+    border: 6px solid white;
+}
+
+.pink {
+    width: 100%;
+    background-color: pink;
+}
+
+.fuschia {
+    width: 25%;
+    background-color: fuchsia;
+}
+.blue {
+    width: 50%;
+    background-color: lightblue;
+}
+.green {
+    width: 75%;
+    background-color: green;
+}
+.orange {
+    width: 25%;
+    background-color: orange;
+}
+
+@media (max-width: 768px) {
+    .box {
+        width: 100%;
+    }
+}

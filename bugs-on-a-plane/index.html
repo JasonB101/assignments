@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Form</title>
+</head>
+<body>
+    <h1>Welcome to Blah Blah Airlines!</h1>
+    <p>Please fill out the folowing form so we don't accidentaly kill you, Yay...</p>
+    <form id="airline-form">
+        <input type="text" name="first-name">
+        <label for="">First Name</label>
+        <br>
+        <input type="text" name="last-name">
+        <label for="">Last Name</label>
+        <br>
+        <input type="digit" name="age">
+        <label for="">Age</label>
+        <br>
+        <input type="radio" name="gender" value="male" id="male">
+        <label for="male">Male</label>
+        <br>
+        <input type="radio" name="gender" value="female" id="female">
+        <label for="female">Female</label>
+        <br>
+        <input type="radio" name="gender" value="meh.." id="meh">
+        <label for="meh">Meh..</label>
+        <br>
+        <select name="travel-location">
+            <option value="here">Here</option>
+            <option value="there">There</option>
+            <option value="overthere">Somewhere else</option>
+        </select>
+        <label for="">Where are you going?</label>
+        <br>
+        <input class="diet" type="checkbox" name="vegan" id="vegan" value="vegan">
+        <label for="vegan">Vegan</label>
+        <br>
+        <input class="diet" type="checkbox" name="gluten" id="gluten" value="gluten-free">
+        <label for="gluten">Gluten-free</label>
+        <br>
+        <input class="diet" type="checkbox" name="paleo" id="paleo" value="paleo">
+        <label for="paleo">Paleo, jk you eat what we give you!</label>
+        <br>
+        <button type="button" id="submit">Submit</button>
+    </form>
+    <script src="app.js"></script>
+</body>
+</html>

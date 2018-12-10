@@ -10,7 +10,7 @@ function formAlert() {
     var location = form.elements["travel-location"].value;
     var diet = [];
     if (form.elements['vegan'].checked) {
-        diet.push(document.getElementById("vegan").value);
+        diet.push(document.getElementById('vegan').value);
     }
     if (form.elements['gluten'].checked) {
         diet.push(document.getElementById('gluten').value);

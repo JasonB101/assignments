@@ -14,4 +14,4 @@ password = password.substr(0, index) + character + password.substr(index)
 console.log(password)
 }
 
-generatePassword(15)
+generatePassword(15, "test")

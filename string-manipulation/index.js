@@ -7,6 +7,6 @@ var fruit = rs.question("Type in a fruit: ")
 var message = rs.question("Type in a long message, more than 20 characters: ")
 
 
-arr.push(name.toUpperCase(), age, fColor.concat(fruit), message.slice(message.length / 2), message.slice(rs.questionInt("Enter a number of the index, from where you would like to read the message: ")))
+arr.push(name.toUpperCase(), age.length, fColor.concat(fruit), message.slice(message.length / 2), message.slice(rs.questionInt("Enter a number of the index, from where you would like to read the message: ")))
 
 console.log(arr)

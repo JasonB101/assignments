@@ -1,0 +1,47 @@
+.title {
+    text-align: center;
+}
+
+.main {
+    border: 1px solid black;
+    width: 50%;
+    margin: auto;
+}
+
+#add-item {
+    border: 1px solid black;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.label {
+    margin: 10px;
+}
+
+#list {
+
+    flex-direction: column;
+    display: flex;
+    max-height: 200px;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+#list > li{
+    list-style-type: none;
+    margin: 10px;
+    width: fit-content;
+}
+
+#list div {
+    margin-bottom: 10px;
+    text-align: center;
+}

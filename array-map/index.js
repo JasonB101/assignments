@@ -41,8 +41,8 @@
 //         name: "Bob Ziroll",
 //         age: 100
 //     }
-// ])) 
-// // ["Angelina Jolie", "Eric Jones", "Paris Hilton", "Kayne West", "Bob Ziroll"]
+// ]))
+
 
 // function readyToPutInTheDOM(arr){
 //     return arr.map((e) => "<h1>" + e.name + "</h1>" + "<h2>" + e.age + "</h2>")

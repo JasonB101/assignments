@@ -1,0 +1,135 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9AE79;
+}
+
+.game-wrapper {
+    width: 40%;
+    height: 60%;
+    background-color: #BF8C60;
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 550px;
+    min-width: 700px;
+}
+
+.info-box {
+    display: flex;
+    position: relative;
+    border-radius: 10px;
+    height: 30%;
+    width: 98%;
+    background-color: #8C5230;
+    margin: 0 auto;
+    padding: 15px;
+
+}
+
+img {
+    height: 250px;
+}
+
+.batt-grounds {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 70%;
+}
+
+.stats {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    }
+
+.player-stats {
+    flex-direction: column;
+    padding: 0 0 0 15px;
+    border-right: 2px dashed black;
+}
+.enemy-stats {
+    display: flex;
+    padding: 0 0 0 15px;
+}
+.enemy-stats > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: fit-content;
+
+}
+
+.enemy-box {
+    text-align: center;
+}
+
+.stats p {
+    color: #FFFF;
+    font-family: 'Karla', sans-serif;
+}
+
+.char-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input{ 
+    margin: 10px;
+}
+
+label {
+    color: #D9AE79;
+}
+.move-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.move-button:focus {
+    outline: none;
+  }
+
+.move-button{
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+    background-size:     cover;                      
+    background-repeat:   no-repeat;
+    background-position: center;
+    background-color: #D9AE79;
+
+}
+
+#punch-button{
+    background-image: url(../Images/punch.png)
+}
+
+#slap-button{
+    background-image: url(../Images/slap.png)
+}
+
+#spit-button{
+    background-image: url(../Images/spit.png)
+}
+
+h1 {
+    margin: 20px;
+    color: #FFFF;
+}
+
+ul {
+    white-space: nowrap;
+}

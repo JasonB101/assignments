@@ -1,0 +1,19 @@
+Item that increase accuracy: as a percent "AY10" "AY15" "AY20"
+item that increase strength: "AK5" "AK10" AK15"
+item that increase health: "HP20" "HP25" "HP30"
+item that speeds up energy" "E1" "E2"
+item that takes another turn "TURN"
+max 4 items in inventory
+
+Enemies [Bowser, Spyro, Scorpian, Connor, Charzard]
+
+Types of attacks [Punch, Spit, Slap]
+
+Game object shows
+
+enemies killed, whos turn, 
+
+turn change: after eventlistener happens on attack, run enemies turn function,
+if stealTurn = true then run player turn function.
+
+var rewards = [["HP20", "AY15", "AK5"], ["HP25", "AY15", "AK10"], ["HP30", "AY20", "AK15", "E1"], ["E2", "STURN"]]

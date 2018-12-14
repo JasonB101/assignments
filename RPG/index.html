@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="./CSS/styles.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="./CSS/balloon.css" />
+    <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+
+</head>
+
+<body>
+    <h1 id="turn-state">Player's Turn</h1>
+    <div class="game-wrapper">
+        <div class="batt-grounds">
+            <div class="char-box">
+                <h2 id="player-name">Player</h2>
+                <img src="/Images/WreckitRalph.png"><br>
+                <progress id="player-health-bar" value="100" max="100"></progress>
+                <p id="player-health-ratio">100/100</p>
+            </div>
+            <div class="move-box">
+                <button type="button" data-balloon-pos="left" data-balloon="Punch!" class="move-button" id="punch-button"></button>
+                <button type="button" data-balloon-pos="left" data-balloon="Slap!" class="move-button" id="slap-button"></button>
+                <button type="button" data-balloon-pos="left" data-balloon="Spit!" class="move-button" id="spit-button"></button>
+            </div>
+            <div class="char-box">
+                <h2 id="enemy-name">Enemy</h2>
+                <img src="/Images/Bowser.png" id="enemy-image"><br>
+                <progress id="enemy-health-bar" value="34" max="100"></progress>
+                <p id="enemy-health-ratio">34/100</p>
+            </div>
+        </div>
+        <div class="info-box">
+            <div class="stats player-stats">
+                <div>
+                    <p id="player-hp" class="stat-labels">Player HP: 100</p>
+                    <p id="player-strength" class="stat-labels">Attack Strength: 15</p>
+                    <p id="energy" class="stat-labels">Energy: 10</p>
+                    <p id="player-inventory" class="stat-labels">Inventory: </p>
+                    <br>
+                    <select id="inventory-select">
+                        <option name="HP20">HP +20</option>
+
+
+                    </select> <button id="use-item" type="button">Use Item</button>
+                </div>
+
+            </div>
+            <div class="stats enemy-stats">
+                <div>
+                    <p id="enemy-hp" class="stat-labels">Enemy HP: 100</p>
+                    <p id="enemy-strength" class="stat-labels">Attack Strength: 15</p>
+                    <br>
+                    <div class="enemy-box">
+
+                        <p id="player-inventory" class="stat-labels">Pick your reward </p>
+                        <ul id="reward-list">
+                            <label>HP 20 <input type="radio" name="inventory-pick"></label>
+                            <label>ATK 20 <input type="radio" name="inventory-pick"></label>
+                            <label>ACY 20 <input type="radio" name="inventory-pick"></label>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="index.js"></script>
+</body>
+
+</html>

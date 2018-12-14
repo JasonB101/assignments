@@ -1,2 +1,0 @@
-Make it possible to add an item to the list.
-create a function that constructs an item with all of its divs based on the textbox input

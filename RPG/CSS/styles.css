@@ -27,7 +27,7 @@ body {
     display: flex;
     position: relative;
     border-radius: 10px;
-    height: 30%;
+    height: 25%;
     width: 98%;
     background-color: #8C5230;
     margin: 0 auto;
@@ -43,7 +43,7 @@ img {
     display: flex;
     justify-content: space-around;
     width: 100%;
-    height: 70%;
+    height: 68%;
 }
 
 .stats {
@@ -89,9 +89,6 @@ input{
     margin: 10px;
 }
 
-label {
-    color: #D9AE79;
-}
 .move-box {
     display: flex;
     flex-direction: column;
@@ -130,6 +127,29 @@ h1 {
     color: #FFFF;
 }
 
-ul {
-    white-space: nowrap;
+
+h5 {
+    text-align: center;
+    margin: 5px;
+    font-size: 28px;
+    color: gold;
+}
+
+#reward-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    border: 4px dashed lightgreen;
+    padding: 10px;
+}
+
+.reward-button {
+    margin: 0 3px;
+}
+
+h6 {
+    font-size: 14px;
+    margin: 10px;
 }

@@ -1,6 +1,4 @@
-// var setName = prompt("What is your name?")
-
-var enemies = ["bowser", "scorpion", "spyro", "charizard", "conor"]
+var setName = prompt("What is your name?")
 var rewards = [
     ["HP20", "AY15", "AK5"],
     ["HP25", "AY15", "AK10"],
@@ -10,66 +8,68 @@ var rewards = [
 var enemy;
 // CHARACTERS //
 var player = {
-    name: "Jason",
+    name: setName,
     hp: 100,
     attack: 25,
     inventory: ["HP20"],
     inventoryLimit: 4,
+    accuracy: 0.5,
     energy: 10,
     energyIncrease: 5,
+    killed: 0,
     stealTurn: false,
 }
 
-var bowser = {
-    name: "Bowser",
-    hp: 100,
-    attack: 15,
-    image: "Bowser.png",
-}
+var enemies = [
+    bowser = {
+        name: "Bowser",
+        hp: 100,
+        attack: 7,
+        image: "Bowser.png",
+    },
 
-var scorpion = {
-    name: "Scorpion",
-    hp: 100,
-    attack: 13,
-    image: "scorpion.png",
-}
+    scorpion = {
+        name: "Scorpion",
+        hp: 100,
+        attack: 5,
+        image: "scorpion.png",
+    },
 
-var spyro = {
-    name: "Spyro",
-    hp: 67,
-    attack: 18,
-    image: "Spyro.png",
-}
+    spyro = {
+        name: "Spyro",
+        hp: 100,
+        attack: 12,
+        image: "Spyro.png",
+    },
 
-var charizard = {
-    name: "Charizard",
-    hp: 100,
-    attack: 15,
-    image: "charizard.png",
-}
+    charizard = {
+        name: "Charizard",
+        hp: 100,
+        attack: 9,
+        image: "charizard.png",
+    },
 
-var conor = {
-    name: "Conor McGregor",
-    hp: 100,
-    attack: 8,
-    image: "conor.png",
-}
+    conor = {
+        name: "Conor McGregor",
+        hp: 100,
+        attack: 3,
+        image: "conor.png",
+    },
+]
 
 //CHARACTERS END //
 
 // CONSTRUCTORS //
 
-createEnemy(eval(enemies[Math.floor(Math.random() * 5)]))
+var enemy = new Enemy(enemies[Math.floor(Math.random() * 5)])
 
-function createEnemy(obj) {
-
-    enemy = {
-        name: obj.name,
-        hp: obj.hp,
-        attack: obj.attack,
-        image: obj.image,
-        rewards:  genRewards(rewards),
-    }
+function Enemy(obj) {
+    this.name = obj.name;
+    this.hp = obj.hp;
+    this.attack = obj.attack;
+    this.image = obj.image;
+    this.rewards = genRewards(rewards);
+    this.accuracy = .6;
 }
 
 // CONSTRUCTORS END //
@@ -94,6 +94,11 @@ var enemyHp = document.getElementById('enemy-hp')
 var enemyStrength = document.getElementById('enemy-strength')
 var enemyHealthRatio = document.getElementById('enemy-health-ratio')
 var rewardList = document.getElementById('reward-list')
+var enemyBox = document.getElementById('enemy-box')
+var action = document.querySelector('h5')
+var enemiesKilled = document.getElementById('killed')
+var rewardBox = document.getElementById('reward-box')
+var rewardSelection = document.querySelector('input[name = "inventory-pick"]')
 
 // DOCUMENT PULLS END //
 
@@ -108,6 +113,8 @@ function renderObjects(player, enemy) {
     playerHp.textContent = "Player HP: " + player.hp;
     playerStrength.textContent = "Attack Strength: " + player.attack;
     playerEnergy.textContent = "Energy: " + player.energy;
+    enemiesKilled.textContent = "Enemies Killed: " + player.killed;
+    renderInventory(player.inventory)
 
     // ENEMY //
     enemyName.textContent = enemy.name;
@@ -121,14 +128,13 @@ function renderObjects(player, enemy) {
     function rewardRender(arr) {
         rewardList.innerHTML = ""
         for (let i = 0; i < arr.length; i++) {
-            var newReward = document.createElement('label')
-            var newBox = document.createElement('input')
-            newBox.type = "radio"
-            newBox.name = "inventory-pick"
+            var newBox = document.createElement('button')
+            newBox.type = "button"
+            newBox.textContent = arr[i]
             newBox.value = arr[i]
-            newReward.textContent = arr[i]
-            newReward.appendChild(newBox)
-            rewardList.appendChild(newReward)
+            newBox.classList = "reward-button"
+            newBox.addEventListener("click", addToInventory)
+            rewardList.appendChild(newBox)
         }
     }
 }
@@ -137,26 +143,51 @@ function renderObjects(player, enemy) {
 renderObjects(player, enemy)
 
 useItem.addEventListener("click", (e) => {
+    var arr = itemParse(playerInventory.selectedOptions[0].value)
+    if (arr[0] === "HP") player.hp += +arr[1]
+    else if (arr[0] === "AK") player.attack += +arr[1]
+    else if (arr[0] === "AY") player.accuracy += arr[1] / 100
+    else if (arr[0] === "E") player.energyIncrease += +arr[1]
+    else if (arr[0] === "STURN") player.stealTurn = true
 
+    player.inventory.splice(playerInventory.selectedOptions[0].index, 1)
+    console.log(player.accuracy)
     renderObjects(player, enemy)
-
 })
 
 punchButton.addEventListener("click", (e) => {
-    punch(player, enemy)
+    action.style.visibility = "hidden"
+    punch(player, enemy, player.accuracy)
     renderObjects(player, enemy)
-    enemysTurn()
+    console.log(player.stealTurn)
+    if (player.stealTurn) {
+        player.stealTurn = false
+        console.log(player.stealTurn)
+
+    } else {
+        enemysTurn()
+    }
 })
 slapButton.addEventListener("click", (e) => {
-    slap(player, enemy)
+    action.style.visibility = "hidden"
+    slap(player, enemy, player.accuracy)
     renderObjects(player, enemy)
-    enemysTurn()
+    if (player.stealTurn) {
+        player.stealTurn = false
+    } else {
+        enemysTurn()
+    }
 })
 spitButton.addEventListener("click", (e) => {
+    action.style.visibility = "hidden"
     spit(player, enemy)
     player.energy = 0
     renderObjects(player, enemy)
-    enemysTurn()
+    if (player.stealTurn) {
+        player.stealTurn = false
+    } else {
+        enemysTurn()
+    }
 })
 
 function disableButtons() {
@@ -175,29 +206,47 @@ function enableButtons() {
 }
 
 function playersTurn() {
+    enemyBox.style.visibility = "visible"
     turnState.textContent = "Player's Turn"
     enableButtons()
     if (player.hp <= 0) {
+        renderObjects(player, enemy)
         turnState.textContent = "Game Over"
         disableButtons()
-    }
+    } else {
 
     player.energy = player.energy + player.energyIncrease
     renderObjects(player, enemy)
-
-
+    }
+    if (player.killed >= 10) winGame()
 }
 
 function enemysTurn() {
     renderObjects(player, enemy)
     disableButtons()
     if (enemy.hp <= 0) {
+        enemyBox.style.visibility = "hidden"
+        rewardBox.style.visibility = "visible"
+        player.killed += 1
+    } else {
 
-        createEnemy(eval(enemies[Math.floor(Math.random() * 5)]))
+        rewardBox.style.visibility = "hidden"
+
+        turnState.textContent = "Enemy's Turn"
+        var timeOut = setTimeout(function () {
+            if (Math.random() < 0.333) {
+                action.textContent = "Punch!"
+                action.style.visibility = "visible"
+                punch(enemy, player, enemy.accuracy)
+            } else {
+                action.textContent = "Slap!"
+                action.style.visibility = "visible"
+                slap(enemy, player, enemy.accuracy)
+            }
+            playersTurn()
+        }, 1500)
     }
-    turnState.textContent = "Enemy's Turn"
-    Math.random() < 0.333 ? punch(enemy, player) : slap(enemy, player)
-    playersTurn()
+    timeOut
 }
 
 function genRewards(arr) {
@@ -216,17 +265,65 @@ function genRewards(arr) {
     return newArr
 }
 
-function punch(perp, victim) {
-    victim.hp = victim.hp - (perp.attack + Math.floor(Math.random() * 8 + 3))
-
+function renderInventory(rewards) {
+    playerInventory.innerHTML = ""
+    for (let i = 0; i < rewards.length; i++) {
+        var newInv = document.createElement('option')
+        newInv.textContent = rewards[i]
+        playerInventory.appendChild(newInv)
+    }
 }
 
-function slap(perp, victim) {
-    victim.hp = victim.hp - (perp.attack + Math.floor(Math.random() * 3))
-
+function createNewEnemy() {
+    enemy = new Enemy(enemies[Math.floor(Math.random() * 5)])
+    rewardBox.style.visibility = "hidden"
+    playersTurn()
 }
 
-function spit(perp, victim) {
+function addToInventory(e) {
+    player.inventory.push(e.target.value)
+    createNewEnemy()
+}
+
+function punch(perp, victim, accuracy) {
+    if (Math.random() < accuracy + .2) {
+        victim.hp = victim.hp - (perp.attack + Math.floor(Math.random() * 3))
+        var audio = new Audio('/Sounds/Punch.wav');
+        audio.play();
+    } else {
+        action.style.visibility = "visible"
+        action.textContent = "Missed!"
+        var audio = new Audio('/Sounds/Miss.wav');
+        audio.play();
+    }
+}
+
+function slap(perp, victim, accuracy) {
+    if (Math.random() < accuracy - .1) {
+        victim.hp = victim.hp - (perp.attack + Math.floor(Math.random() * 8 + 3))
+        var audio = new Audio('/Sounds/Slap.wav');
+        audio.play();
+    } else {
+        action.style.visibility = "visible"
+        action.textContent = "Missed!"
+        var audio = new Audio('/Sounds/Miss.wav');
+        audio.play();
+    }
+}
+
+function spit(perp, victim, accuracy) {
     victim.hp = victim.hp - perp.energy
+    var audio = new Audio('/Sounds/Spit.wav');
+        audio.play();
 
+}
+
+function itemParse(item) {
+    return item.split(/([0-9]+)/).filter(Boolean)
+
+}
+
+function winGame(){
+    turnState.textContent = "Congratulations, you won! 10 enemies killed."
+    disableButtons()
 }

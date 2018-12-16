@@ -1,21 +1,29 @@
+var playerImage = document.getElementById('player-image')
+var playerImages = ["Ralph", "Ryu", "Horton", "Yugioh", "Bane", "Jimmy", "Grinch" ]
 var setName = prompt("What is your name?")
 var rewards = [
-    ["HP20", "AY15", "AK5"],
-    ["HP25", "AY15", "AK10"],
-    ["HP30", "AY20", "AK15", "E1"],
-    ["E2", "STURN"]
+    ["HP20", "AY15", "HP20", "HP20", "AK5"],
+    ["HP25", "AY15", "HP25", "AK10"],
+    ["HP30", "AY20", "AK15", "HP30", "E2"],
+    ["E3", "STURN", "HPFULL"],
+    ["HPFULL", "HP+20"],
+    ["HP+40"]
 ]
 var enemy;
 // CHARACTERS //
 var player = {
     name: setName,
+    rootHP: 100,
     hp: 100,
     attack: 25,
     inventory: ["HP20"],
     inventoryLimit: 4,
     accuracy: 0.5,
     energy: 10,
+    started: false,
     energyIncrease: 5,
+    image: playerImage,
+    hero: "Ralph", 
     killed: 0,
     stealTurn: false,
 }
@@ -25,6 +33,7 @@ var enemies = [
         name: "Bowser",
         hp: 100,
         attack: 7,
+        accuracy: .4,
         image: "Bowser.png",
     },
 
@@ -32,20 +41,23 @@ var enemies = [
         name: "Scorpion",
         hp: 100,
         attack: 5,
+        accuracy: .7,
         image: "scorpion.png",
     },
 
     spyro = {
         name: "Spyro",
         hp: 100,
-        attack: 12,
+        attack: 18,
+        accuracy: .3,
         image: "Spyro.png",
     },
 
     charizard = {
         name: "Charizard",
         hp: 100,
-        attack: 9,
+        attack: 30,
+        accuracy: .2,
         image: "charizard.png",
     },
 
@@ -53,6 +65,7 @@ var enemies = [
         name: "Conor McGregor",
         hp: 100,
         attack: 3,
+        accuracy: 1,
         image: "conor.png",
     },
 ]
@@ -66,10 +79,11 @@ var enemy = new Enemy(enemies[Math.floor(Math.random() * 5)])
 function Enemy(obj) {
     this.name = obj.name;
     this.hp = obj.hp;
-    this.attack = obj.attack;
+    this.attack = obj.attack + Math.floor(Math.random() * 4);
     this.image = obj.image;
     this.rewards = genRewards(rewards);
-    this.accuracy = .6;
+    this.accuracy = obj.accuracy + player.accuracy / 6;
+
 }
 
 // CONSTRUCTORS END //
@@ -107,9 +121,11 @@ var rewardSelection = document.querySelector('input[name = "inventory-pick"]')
 
 function renderObjects(player, enemy) {
     // PLAYER //
+    playerImage.src = "../Images/" + player.hero + ".png"
     playerName.textContent = player.name;
     playerHealthBar.value = player.hp;
-    playerHealthRatio.textContent = player.hp + "/100";
+    playerHealthBar.max = player.rootHP;
+    playerHealthRatio.textContent = player.hp + "/" + player.rootHP;
     playerHp.textContent = "Player HP: " + player.hp;
     playerStrength.textContent = "Attack Strength: " + player.attack;
     playerEnergy.textContent = "Energy: " + player.energy;
@@ -142,16 +158,25 @@ function renderObjects(player, enemy) {
 // OBJECT RENDER END //
 renderObjects(player, enemy)
 
+playerImage.addEventListener("click", changeImage)
+
+
+playerImage.addEventListener("animationend", (e) => {
+    playerImage.classList = "";
+})
+
+
+enemyImage.addEventListener("animationend", (e) => {
+    enemyImage.classList = "";
+})
+
+
+
 useItem.addEventListener("click", (e) => {
     var arr = itemParse(playerInventory.selectedOptions[0].value)
-    if (arr[0] === "HP") player.hp += +arr[1]
-    else if (arr[0] === "AK") player.attack += +arr[1]
-    else if (arr[0] === "AY") player.accuracy += arr[1] / 100
-    else if (arr[0] === "E") player.energyIncrease += +arr[1]
-    else if (arr[0] === "STURN") player.stealTurn = true
+    applyReward(arr)
 
     player.inventory.splice(playerInventory.selectedOptions[0].index, 1)
-    console.log(player.accuracy)
     renderObjects(player, enemy)
 })
 
@@ -181,7 +206,7 @@ slapButton.addEventListener("click", (e) => {
 spitButton.addEventListener("click", (e) => {
     action.style.visibility = "hidden"
     spit(player, enemy)
-    player.energy = 0
+    player.energy > 100 ? player.energy = player.energy - 100 : player.energy = 0
     renderObjects(player, enemy)
     if (player.stealTurn) {
         player.stealTurn = false
@@ -206,6 +231,8 @@ function enableButtons() {
 }
 
 function playersTurn() {
+    
+
     enemyBox.style.visibility = "visible"
     turnState.textContent = "Player's Turn"
     enableButtons()
@@ -215,13 +242,17 @@ function playersTurn() {
         disableButtons()
     } else {
 
-    player.energy = player.energy + player.energyIncrease
-    renderObjects(player, enemy)
+        player.energy = player.energy + player.energyIncrease
+        renderObjects(player, enemy)
     }
-    if (player.killed >= 10) winGame()
+    if (player.killed >= 15) winGame()
 }
 
 function enemysTurn() {
+    if (player.started === false) {
+        playerImage.removeEventListener("click", changeImage)
+        player.started = true
+    }
     renderObjects(player, enemy)
     disableButtons()
     if (enemy.hp <= 0) {
@@ -257,8 +288,10 @@ function genRewards(arr) {
         var index2;
         if (randoNum < .4) index1 = 0
         else if (randoNum >= .4 && randoNum < .65) index1 = 1
-        else if (randoNum >= .65 && randoNum < .85) index1 = 2
-        else if (randoNum >= .85) index1 = 3
+        else if (randoNum >= .65 && randoNum < .73) index1 = 2
+        else if (randoNum >= .73 && randoNum < .85) index1 = 3
+        else if (randoNum >= .85 && randoNum < .94) index1 = 4
+        else if (randoNum >= .94) index1 = 5
         var index2 = Math.floor(Math.random() * arr[index1].length)
         newArr.push(arr[index1][index2])
     }
@@ -281,8 +314,14 @@ function createNewEnemy() {
 }
 
 function addToInventory(e) {
-    player.inventory.push(e.target.value)
+    var reward = itemParse(e.target.value)
+    if (reward[0] === "AY" || reward[0] === "AK" || reward[0] === "E" || reward[0] ==="HP+") {
+        applyReward(reward)
+    } else {
+        player.inventory.push(e.target.value)
+    }
     createNewEnemy()
+
 }
 
 function punch(perp, victim, accuracy) {
@@ -290,6 +329,8 @@ function punch(perp, victim, accuracy) {
         victim.hp = victim.hp - (perp.attack + Math.floor(Math.random() * 3))
         var audio = new Audio('/Sounds/Punch.wav');
         audio.play();
+        if (victim.image === playerImage) playerImage.classList.add("apply-shake");
+        else enemyImage.classList.add("apply-shake");
     } else {
         action.style.visibility = "visible"
         action.textContent = "Missed!"
@@ -303,6 +344,8 @@ function slap(perp, victim, accuracy) {
         victim.hp = victim.hp - (perp.attack + Math.floor(Math.random() * 8 + 3))
         var audio = new Audio('/Sounds/Slap.wav');
         audio.play();
+        if (victim.image === playerImage) playerImage.classList.add("apply-shake");
+        else enemyImage.classList.add("apply-shake");
     } else {
         action.style.visibility = "visible"
         action.textContent = "Missed!"
@@ -312,9 +355,9 @@ function slap(perp, victim, accuracy) {
 }
 
 function spit(perp, victim, accuracy) {
-    victim.hp = victim.hp - perp.energy
+    perp.energy > 100 ? victim.hp = victim.hp - 100 : victim.hp = victim.hp - perp.energy
     var audio = new Audio('/Sounds/Spit.wav');
-        audio.play();
+    audio.play();
 
 }
 
@@ -323,7 +366,34 @@ function itemParse(item) {
 
 }
 
-function winGame(){
-    turnState.textContent = "Congratulations, you won! 10 enemies killed."
+function winGame() {
+    turnState.textContent = "Congratulations, you won! " + player.killed + " enemies killed."
     disableButtons()
+}
+
+function applyReward(reward) {
+
+    if (reward[0] === "HP") {
+        player.hp = player.hp + +reward[1] >= player.rootHP ? player.rootHP : player.hp + +reward[1]
+    } else if (reward[0] === "AK") player.attack += +reward[1]
+    else if (reward[0] === "AY") player.accuracy += +reward[1] / 100
+    else if (reward[0] === "HP+") {
+        player.hp += +reward[1]
+        player.rootHP += +reward[1]
+    }
+    else if (reward[0] === "HPFULL") player.hp = player.rootHP
+    else if (reward[0] === "E") player.energyIncrease += +reward[1]
+    else if (reward[0] === "STURN") player.stealTurn = true
+    renderObjects(player, enemy)
+}
+
+function changeImage(){
+    var index = playerImages.indexOf(player.hero)
+    if (index < 6){
+        player.hero = playerImages[index + 1]
+    }
+    else {
+        player.hero = playerImages[0]
+    }
+    renderObjects(player, enemy)
 }

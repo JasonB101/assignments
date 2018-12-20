@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    justify-content: center;
+}
+form {
+    display: grid;
+    width: 500px;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input {
+    margin: 3px;
+    padding: 3px;
+}
+.form-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40px 40px 1fr;
+}
+
+button {
+    padding: 10px;
+    margin: 20px;
+}
+
+label {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+}
+
+.list-wrapper {
+    width: 500px;
+    border: 1px solid black;
+}
+
+.item-wrapper {
+    position: relative;
+    margin: 10px;
+    border-bottom: 1px dashed black;
+}
+
+h3 {
+    text-align: center;
+}
+
+.deleteX {
+    position: absolute;
+    margin: 0;
+    font-size: 30px;
+    right: 5px;
+    top: -15px;
+    color: red;
+    cursor: pointer;
+    
+}
+
+.number {
+    position: absolute;
+    margin: 0;
+    font-size: 20px;
+    left: 5px;
+    top: -5px;
+    color: black;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.complete-check{
+    cursor: pointer;
+}
+
+.todo-image{
+    height: 100px;
+    width: auto;
+}

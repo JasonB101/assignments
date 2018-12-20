@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+
+</head>
+
+<body>
+    <form>
+        <h1> Todo List</h1>
+        <div class="form-wrapper">
+            <input type="textbox" name="title" placeholder="Name of Todo">
+            <input type="textbox" name="desc" placeholder="Description">
+            <input type="number" name="price" placeholder="Price">
+            <label name="completedlLabel">Completed: <input type="checkbox" name="completed"></label>
+            <input type="button" id="img-url" value="Copy Image URL From Clipboard">
+            <img class="todo-image" id="form-image">
+        </div>
+        <button type="button">Submit</button>
+
+    </form>
+
+    <div id="list-wrapper" class="list-wrapper">
+
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

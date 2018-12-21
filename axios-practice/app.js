@@ -12,6 +12,7 @@ function postTodo() {
         let newPackage = new Package()
         axios.post(baseURL, newPackage).then(response => renderResponse(response.data))
         form.reset()
+        formImage.src=""
         form.title.focus()
     } else {
         alert("A title is required to submit this todo.")

@@ -10,8 +10,7 @@
     grid-template-rows: 1fr auto 10fr 1fr;
     grid-template-areas: 
     "h h h h h h h h h h h h"
-    "c c c c c c c c c c c c"
-    "c c c c c c c c c c c c"
+    "n n n n n n n n n n n n"
     "c c c c c c c c c c c c"
     "f f f f f f f f f f f f"
 
@@ -22,26 +21,29 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75px;
+    height: 76px;
     background-color: #0388A6;
 }
 
 #nav-menu {
     height: 100%; 
+    overflow: hidden;
     width: 0px; 
     position: fixed; 
     z-index: 1; 
     top: 75px; 
     left: 0;
     grid-area: n;
-    background-color: #024873;
+    background: linear-gradient(#0388A6, #024873);
     -webkit-transition: width 0.5s;
     transition: width 0.5s;
 }
 #content {
     grid-area: c;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     overflow: scroll;
-    background-color: #F2F2F2;
+    background-color: #FFFF;
 }
 
 footer {
@@ -56,37 +58,91 @@ footer {
 
 .nav-bar {
     overflow: hidden;
+    padding: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 45px;
     white-space: nowrap;
 }
-
 a {
+    text-decoration: none;
+}
+.nav-a {
     text-decoration: none;
     color: white;
     font-size: 25px;
     
 }
 
+
 #nav-button {
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 50px;
+    width: 40px;
 }
 
 h1 {
     color: #FFFF;
-    font-size: 30px;
+    font-size: 25px;
 }
+
+.story-image{
+    height: 100px;
+    float: left;
+    margin-right: 10px;
+}
+
+.story-content{
+    font-size: 16px;
+    color: black;
+}
+
+.news-wrapper {
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    overflow: hidden;
+    width: 310px;
+    height: 330px;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #E5ECFF;
+
+}
+
+.publish-wrapper {
+    display: flex;
+    height: 100%;
+    margin: 5px;
+    width: 100%;
+    justify-content: flex-end;
+    align-content: flex-end;
+}
+
+h5 {
+    text-align: center;
+    font-size: 20px;
+    margin: 10px;
+}
+
+
+
+.publisher {
+
+    font-style: italic;
+    height: fit-content;
+    margin: 10px;
+}
+
 @media (min-width: 600px) {
     .wrapper {
+        grid-template-rows: 1fr auto 10fr 1fr;
         grid-template-areas: 
         "h h h h h h h h h h h h"
         "n n n n n n n n n n n n"
-        "c c c c c c c c c c c c"
         "c c c c c c c c c c c c"
         "f f f f f f f f f f f f"
     
@@ -94,6 +150,7 @@ h1 {
 
     #nav-menu {
         display: flex;
+        position: static;
         height: auto;
         width: 100%;
         justify-content: space-around;

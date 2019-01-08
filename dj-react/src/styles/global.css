@@ -1,0 +1,27 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 75px);
+    /* grid-template-rows: 10 */
+    justify-content: center;
+}
+
+.square {
+    height: 75px;
+    border: 1px solid pink;
+    margin: 2px;
+}
+
+.controls {
+    display: flex;
+    margin: 5px;
+}
+.button {
+    margin: 2px auto;
+}
+.wrapper {
+    width: 25vw;
+}
+.mainDiv {
+    display: flex;
+    justify-content: center;
+}

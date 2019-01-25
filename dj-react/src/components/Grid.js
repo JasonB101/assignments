@@ -1,7 +1,7 @@
 import React from "react"
 import Square from "./Square"
 
-const Grid = ({ boxes, snake }) => {
+const Grid = ({ boxes, snake, color }) => {
     
     function checkSnake(j, x){
         for (let i = 0; i < snake.length; i++) {
@@ -11,7 +11,7 @@ const Grid = ({ boxes, snake }) => {
         }
         return false
     }
-    const squareComponents = boxes.reduce((acc, row, j) => [...acc, ...row.map((x, i) => <Square key={"" + i + j} color={checkSnake(j, i) ? "blue" : "white"} />)], [])
+    const squareComponents = boxes.reduce((acc, row, j) => [...acc, ...row.map((x, i) => <Square key={j + 6 + "" + i} color={checkSnake(j, i) ? color : "white"} />)], [])
 
     return (
         <div className="grid">

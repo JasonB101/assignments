@@ -1,80 +1,85 @@
 import React from "react"
 import Controls from "./Controls"
 import Grid from "./Grid"
-const snakeColor = "red"
 
-const newHead = (snake) => {
-let head = snake[0]
+const newHead = (snake, max) => {
+    const head = snake[0]
+    const options = [[head[0] + 1, head[1]], [head[0] - 1, head[1]], [head[0], head[1] + 1], [head[0], head[1] - 1]]
+    const possibleOptions = options.filter(x => (
+        [checkSnake(x, snake) === false, x[0] >= 0, x[0] < max, x[1] >= 0, x[1] < max].every(x => x)
+    ))
+    let randoIndex = Math.floor(Math.random() * possibleOptions.length)
+    return possibleOptions[randoIndex]
 
+}
+
+function checkSnake(option, snake) {
+    for (let i = 0; i < snake.length; i++) {
+        if (snake[i][0] === option[0] && snake[i][1] === option[1]) {
+            return true
+        }
+    }
+    return false
 }
 
 class Platform extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            boxes: Array(6).fill(Array(6).fill(0)),
+            boxes: Array(12).fill(Array(12).fill(0)),
             buttons: [],
-            snake: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4]]
+            snake: [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5]],
+            length: 6,
+            color: "blue"
         }
+        this.startSnake = this.startSnake.bind(this)
         this.addToSnake = this.addToSnake.bind(this)
     }
-    addToSnake(){
-        const head = this.state.snake[0]
-        this.setState(ps => ({
-            snake: [newHead(ps.state.snake), ...ps.snake.slice(0, 4)]
-        }))
+    startSnake() {
+        if (this.T){
+            clearInterval(this.T)
+            this.T = null
+        } else {
+            this.T = setInterval(() => {
+                this.setState(ps => ({
+                    snake: [newHead(ps.snake, ps.boxes[0].length) ? newHead(ps.snake, ps.boxes[0].length) : [0, 0],
+                    ...ps.snake.slice(0, ps.length - 1)]
+                }))
+            }, 100)
+        }
+        
     }
+
+    addToSnake() {
+        this.setState({
+            length: this.state.length + 1
+        })
+    }
+
     componentDidMount() {
         this.setState(ps => ({
-            
             buttons: [
                 {
-                    title: "Add To Snake",
+                    title: "Start Snake",
+                    onClick: this.startSnake
+                },
+                {
+                    title: "Add to Snake",
                     onClick: this.addToSnake
                 }
-                
             ]
 
         }))
     }
 
-    handleFirstRow() {
-        this.setState((ps) => ({
-            colors: ps.colors.map((x, j) => x.map((x, i) => j === 0 ? snakeColor : x))
-        }))
 
-    }
-    handleSecondRow() {
-        this.setState((ps) => ({
-            colors: ps.colors.map((x, j) => x.map((x, i) => j === 1 ? snakeColor : x))
-        }))
 
-    }
-    handleBottomHalf() {
-        this.setState((ps) => ({
-            colors: ps.colors.map((x, j) => x.map((x, i) => j > ps.colors.length / 2 - 1 ? snakeColor : x))
-
-        }))
-
-    }
-    handleTopHalf() {
-        this.setState((ps) => ({
-            colors: ps.colors.map((x, j) => x.map((x, i) => j < ps.colors.length / 2 ? snakeColor : x))
-        }))
-
-    }
-    handleReset() {
-        this.setState((ps) => ({
-            colors: ps.colors.map((x, j) => x.map((x, i) => "white"))
-        }))
-
-    }
 
     render() {
         return (
             <div className="wrapper">
                 <Controls button={this.state.buttons} />
-                <Grid boxes={this.state.boxes} snake={this.state.snake} />
+                <Grid {...this.state} />
             </div>
         )
     }

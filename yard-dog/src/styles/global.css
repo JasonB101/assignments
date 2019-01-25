@@ -1,0 +1,71 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(to bottom, #AF060C, #8C060C);
+    padding: 10px;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,0.06), 0 4px 5px 0 rgba(0,0,0,0.06), 0 1px 10px 0 rgba(0,0,0,0.08);
+
+}
+
+footer {
+    background-image: linear-gradient(to top, #AF060C, #8C060C);
+    padding: 5px;
+}
+
+.view {
+    padding: 5px;
+}
+
+.app-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 1fr 8fr 1fr;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.vin-box {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 20px;
+    width: 250px;
+    height: 40px;
+}
+
+
+
+.landing-page {
+    height: 100%;
+}
+
+.landing-page a {
+    text-decoration: none;
+}
+
+.submit-button {
+    margin: 15px;
+    width: 175px;
+    height: 35px;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: #E5D5D4;
+    font-family: 'Exo', sans-serif;
+    background-image: linear-gradient(to top, #7F0409, #E50810);
+}

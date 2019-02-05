@@ -9,6 +9,7 @@ const expressJWT = require("express-jwt")
 app.use(morgan("dev"))
 app.use(express.json())
 app.use("/auth", require("./routes/auth"))
+app.use("/research", require("./routes/research"))
 // Logged in routes
 app.use("/api", expressJWT({ secret: process.env.SECRET }));
 

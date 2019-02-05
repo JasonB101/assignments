@@ -3,11 +3,19 @@ const Schema = mongoose.Schema
 const bcrypt = require("bcrypt")
 
 const userSchema = new Schema({
-    username: {
+    email: {
         type: String,
-        require: true,
+        required: true,
         unique: true,
         lowercase: true
+    },
+    fname: {
+        type: String,
+        required: true
+    },
+    lname: {
+        type: String,
+        required: true
     },
     password: {
         type: String,
@@ -29,9 +37,11 @@ bcrypt.hash(user.password, 10, (err, hash) => {
 })
 })
 
-userSchema.methods.withoutPassword = function () {
+userSchema.methods.withoutSensitiveInfo = function () {
     const user = this.toObject()
     delete user.password
+    delete user.email
+    delete user.lname
     return user
 }
 

@@ -1,0 +1,20 @@
+.image{
+    max-height: 150px;
+    margin: 10px;
+}
+
+.price {
+    color: green;
+}
+
+.part {
+    display: flex;
+    margin: 10px 0;
+}
+.wrapper {
+    padding: 10px;
+}
+
+.title{
+    font-family: 'Titillium Web', sans-serif;
+}

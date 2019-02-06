@@ -32,7 +32,15 @@ module.exports = (() => {
         return new Promise((res, rej) => {
             request(url, (err, response) => {
                 if (err) rej(err);
-                const parts = JSON.parse(response.body).findCompletedItemsResponse[0].searchResult[0].item || [];
+                const rawParts = JSON.parse(response.body).findCompletedItemsResponse[0].searchResult[0].item || []
+                const parts = rawParts.map(x => {
+                    return {
+                        partID: x.itemId,
+                        title: x.title[0],
+                        price: Number(x.sellingStatus[0].currentPrice[0].__value__),
+                        imgurl: x.galleryURL ? x.galleryURL[0] : null,
+                    }
+                })
                 const ebayData = {
                     ...data,
                     parts

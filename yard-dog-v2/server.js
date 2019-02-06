@@ -5,13 +5,16 @@ const mongoose = require("mongoose")
 const morgan = require("morgan")
 const expressJWT = require("express-jwt")
 
+// Logged in routes
+app.use("/api", expressJWT({ secret: process.env.SECRET }));
+
 // Set up express routes and logger
 app.use(morgan("dev"))
 app.use(express.json())
 app.use("/auth", require("./routes/auth"))
-app.use("/research", require("./routes/research"))
-// Logged in routes
-app.use("/api", expressJWT({ secret: process.env.SECRET }));
+app.use("/api/research", require("./routes/research"))
+app.use("/api/save", require("./routes/save"))
+app.use("/api/saved", require("./routes/saved"))
 
 // Connect to colection
 mongoose.set('useCreateIndex', true)

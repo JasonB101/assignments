@@ -14,6 +14,7 @@ class Signup extends Component {
 
     handleChange = (input) => {
         this.setState({
+            errorMessage: "",
             [input.name]: input.value
         })
     }
@@ -28,20 +29,24 @@ class Signup extends Component {
                 this.setState({
                     errorMessage: err.response.data.message
                 })
+                setTimeout(() => {
+                    this.setState({
+                        errorMessage: ""
+                    })
+                }, 5000)
             })
     }
 
     render() {
-        console.log(this.props);
         return (
-            <div>
+            <div className={Styles.formWrapper}>
                 <form className={Styles.signupWrapper}>
                     <h2 className={Styles.h2}>Login</h2>
                     <input onChange={(e) => this.handleChange(e.target)} value={this.state.email} type="text" name="email" placeholder="e-mail address" />
                     <input onChange={(e) => this.handleChange(e.target)} value={this.state.password} type="password" name="password" placeholder="password" />
+                    {this.state.errorMessage ? <p className={Styles.errorMessage}>{this.state.errorMessage}</p> : null}
                     <button onClick={(e) => this.handleSubmit(e)} className={Styles.submitButton}>Submit</button>
                 </form>
-                {this.state.errorMessage ? <p className={Styles.errorMessage}>{this.state.errorMessage}</p> : null}
             </div>
 
         )

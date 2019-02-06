@@ -2,7 +2,14 @@ import React, { Component, createContext } from "react"
 import axios from "axios"
 import { withRouter } from "react-router-dom"
 const authAxios = axios.create()
+const savedAxios = axios.create()
 const { Consumer, Provider } = createContext()
+
+savedAxios.interceptors.request.use((config) => {
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
 
 class DataHandler extends Component {
     constructor() {
@@ -11,9 +18,8 @@ class DataHandler extends Component {
             user: JSON.parse(localStorage.getItem("user")) || {},
             token: localStorage.getItem("token") || "",
             sidenav: false,
-            cars: [],
-            parts: []
-
+            savedCars: [],
+            savedParts: []
         }
     }
 
@@ -64,6 +70,23 @@ class DataHandler extends Component {
         this.props.history.push("/login")
     }
 
+    getSavedCars = () => {
+        savedAxios.get("/api/saved/cars")
+        .then(response => this.setState(ps => {
+          return {
+            savedCars: response.data
+            }
+        }))
+    }
+
+    getSavedParts = () => {
+        savedAxios.get("/api/saved/parts")
+        .then(response => this.setState(ps => {
+            return {
+              savedParts: response.data
+              }
+          }))
+    }
 
     render() {
         return (
@@ -72,7 +95,9 @@ class DataHandler extends Component {
                 signup: this.signup,
                 login: this.login,
                 logout: this.logout,
-                toggle: this.sideNavToggle
+                toggle: this.sideNavToggle,
+                getSavedParts: this.getSavedParts,
+                getSavedCars: this.getSavedCars
             }}>
                 {this.props.children}
             </Provider>

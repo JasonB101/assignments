@@ -17,6 +17,7 @@ class Signup extends Component {
 
     handleChange = (input) => {
         this.setState({
+            errorMessage: "",
             [input.name]: input.value
         })
     }
@@ -35,22 +36,40 @@ class Signup extends Component {
     }
 
     render() {
+        const self = this.state
         return (
-            <div>
-            <form className={Styles.signupWrapper}>
-                <h2 className={Styles.h2}>Create an account</h2>
-                <input onChange={(e) => this.handleChange(e.target)} value={this.state.fname} type="text" name="fname" placeholder="First Name" />
-                <input onChange={(e) => this.handleChange(e.target)} value={this.state.lname} type="text" name="lname" placeholder="Last Name" />
-                <input onChange={(e) => this.handleChange(e.target)} value={this.state.email} type="text" name="email" placeholder="e-mail address" />
-                <input onChange={(e) => this.handleChange(e.target)} value={this.state.password} type="password" name="password" placeholder="password" />
-                <input onChange={(e) => this.handleChange(e.target)} value={this.state.confirmPassword} type="password" name="confirmPassword" placeholder="confirm password" />
-                <button onClick={(e) => this.handleSubmit(e)} className={Styles.submitButton}>Submit</button>
-            </form>
-            {this.state.errorMessage ? <p className={Styles.errorMessage}>{this.state.errorMessage}</p> : null}
-            </div>
-            
+            <div className={Styles.formWrapper}>
+                <form className={Styles.signupWrapper}>
+                    <h2 className={Styles.h2}>Create an account</h2>
+                    <input onChange={(e) => this.handleChange(e.target)} value={this.state.fname} type="text" name="fname" placeholder="First Name" />
+                    <input onChange={(e) => this.handleChange(e.target)} value={this.state.lname} type="text" name="lname" placeholder="Last Name" />
+                    <input onChange={(e) => this.handleChange(e.target)} value={this.state.email} type="text" name="email" placeholder="e-mail address" />
+                    <input onChange={(e) => this.handleChange(e.target)} value={this.state.password} type="password" name="password" placeholder="password" />
+                    <input onChange={(e) => this.handleChange(e.target)} value={this.state.confirmPassword} type="password" name="confirmPassword" placeholder="confirm password" />
+                    {this.state.errorMessage ? <p className={Styles.errorMessage}>{this.state.errorMessage}</p> : null }
+                    <button onClick={(e) => {
+                        e.preventDefault()
+                        if (self.fname && self.lname && self.email.includes("@") && self.password && self.confirmPassword) {
+                        return this.handleSubmit(e)
+                    } else {
+                        this.setState({
+                            errorMessage: "You must fill in all required boxes"
+                        })
+                        setTimeout(() => {
+                            this.setState({
+                                errorMessage: ""
+                            })
+                        }, 5000)
+                    }
+
+                    }
+                    } className={Styles.submitButton}>Submit</button>
+                </form>
+            </div >
+
         )
     }
 }
+
 
 export default withContext(Signup)

@@ -4,7 +4,6 @@ import { withContext } from "../DataHandler"
 import { Link, Switch, Route } from "react-router-dom"
 
 function SideNav(props) {
-    console.log(props)
     const styles = {
         Outter: {width: props.sidenav ? "100%" : "0"},
         Inner: {width: props.sidenav ? "70%" : "0"}

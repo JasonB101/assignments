@@ -1,7 +1,7 @@
 const express = require("express")
 const request = require("request")
 const researchRouter = express.Router()
-const lib = require('../lib');
+const lib = require('../lib')
 
 
 researchRouter.post('/vin', (req, res, next) => {

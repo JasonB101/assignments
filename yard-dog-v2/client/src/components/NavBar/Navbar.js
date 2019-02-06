@@ -9,7 +9,7 @@ function Navbar(props) {
             <Route path="/research" render={() => ( 
                     <div className={Styles.navBar}>
                     <Link to="/research">Research</Link>
-                    <Link to="/myaccount">My Account</Link>
+                    <Link to="/research/history">History</Link>
                     </div>
                 )} />
                 <Route path="/auth" render={() => ( 
@@ -18,10 +18,16 @@ function Navbar(props) {
                     <Link to="/auth/signup">Sign Up</Link>
                     </div>
                 )} />
-                <Route path="/myaccount" render={() => ( 
+                <Route exact path="/myaccount" render={() => ( 
                     <div className={Styles.navBar}>
                     <Link to="/research">Research</Link>
-                    <Link to="/myaccount/cars">My Cars & Parts</Link>
+                    <Link to="/myaccount/saves">My Cars & Parts</Link>
+                    </div>
+                )} />
+                <Route path="/myaccount/saves" render={() => ( 
+                    <div className={Styles.navBar}>
+                    <Link to="/myaccount/saves/cars">My Cars</Link>
+                    <Link to="/myaccount/saves/parts">My Parts</Link>
                     </div>
                 )} />
 
@@ -30,3 +36,4 @@ function Navbar(props) {
 }
 
 export default Navbar
+

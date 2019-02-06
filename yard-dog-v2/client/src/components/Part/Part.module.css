@@ -11,10 +11,25 @@
     display: flex;
     margin: 10px 0;
 }
+
+.partWrapper{
+    
+}
 .wrapper {
     padding: 10px;
 }
 
 .title{
     font-family: 'Titillium Web', sans-serif;
+}
+
+.heart{
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    float: right;
+    width: fit-content;
+    text-align: right;
+    font-size: 30px;
+    color: red;
 }

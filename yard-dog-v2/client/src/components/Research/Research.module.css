@@ -1,0 +1,7 @@
+.heart{
+    float: right;
+    width: fit-content;
+    text-align: right;
+    font-size: 30px;
+    color: red;
+}

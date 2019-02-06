@@ -29,3 +29,12 @@
     flex-direction: column;
     align-items: center;
 }
+
+.errorMessage{
+    width: 100%;
+    text-align: center;
+    color: red;
+    font-size: 12px;
+    padding: 5px;
+    height:25px
+}

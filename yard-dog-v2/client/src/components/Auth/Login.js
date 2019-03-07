@@ -23,6 +23,8 @@ class Signup extends Component {
         e.preventDefault();
         this.props.login(this.state)
             .then(() => {
+                this.props.getSavedCars()
+                this.props.getSavedParts()
                 this.props.history.push("/myaccount")
             })
             .catch(err => {

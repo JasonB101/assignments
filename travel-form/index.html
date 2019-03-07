@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+
+</head>
+
+<body>
+    <div class="form-wrapper">
+        <form name="travelForm">
+            <input type="text" placeholder="First Name" name="firstName"/>
+            <br>
+            <input type="text" placeholder="Last Name" name="lastName"/>
+            <br>
+            <input type="number" placeholder="Age" name="age"/>
+            <br>
+            <p>Gender</p>
+            <label>Male</label><input type="radio" name="gender" value="Male"/>
+            <label>Female</label><input type="radio" name="gender" value="Female"/>
+            <br>
+            <p>Destination of travel.</p>
+            <select name="location">
+                <option>Canada</option>
+                <option>Germany</option>
+                <option>Florida</option>
+            </select>
+            <p>Dietary Restrictions</p>
+            <ul class="diet-list">
+                <li><input type="checkbox" name="vegetarian"> Vegetarian</li>
+                <li><input type="checkbox" name="lactose"> Lactose Intolerant</li>
+                <li><input type="checkbox" name="peanut"> Peanut Allergy</li>
+            </ul>
+            <button name="submitButton">Submit</button>
+        </form>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

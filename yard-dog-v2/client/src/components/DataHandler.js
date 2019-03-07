@@ -88,6 +88,16 @@ class DataHandler extends Component {
           }))
     }
 
+    delSavedCars = (carID) => {
+        savedAxios.del(`/api/saved/cars/${carID}`)
+        .then(response => this.getSavedCars)
+    }
+    delSavedParts = (partID) => {
+        savedAxios.del(`/api/saved/parts/${partID}`)
+        .then(response => this.getSavedParts)
+    }
+
+
     render() {
         return (
             <Provider value={{
@@ -97,7 +107,9 @@ class DataHandler extends Component {
                 logout: this.logout,
                 toggle: this.sideNavToggle,
                 getSavedParts: this.getSavedParts,
-                getSavedCars: this.getSavedCars
+                getSavedCars: this.getSavedCars,
+                delSavedParts: this.delSavedParts,
+                delSavedCars: this.delSavedCars
             }}>
                 {this.props.children}
             </Provider>

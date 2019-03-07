@@ -11,7 +11,7 @@
 
 .sideNavInner * {
     text-decoration: none;
-margin: 20px 0;
+margin: 15px 0;
 padding: 10px;
 color: white;
 font-size: 20px;
@@ -28,6 +28,7 @@ font-family: 'Exo', sans-serif;
     width: 100%;
     background-color: rgb(0, 0, 0, 0.5);
     overflow: hidden;
+    z-index: 100;
     
 }
 

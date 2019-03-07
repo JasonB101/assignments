@@ -3,16 +3,17 @@ import Loading from "../Loading"
 import VehicleDetails from "../VehicleDetails/VehicleDetails"
 import PartsList from "../PartsList/PartsList"
 import Styles from "./Research.module.css"
+import {withContext} from "../DataHandler"
 
-function Research({loading, details, saves}) {
-
+function Research({savedCars, loading, details, saves}) {
+console.log(details)
     return (
         <Loading loading={loading}>
-        <span onClick={() => saves.saveCar(details)} className={Styles.heart}>❤️</span>
+        <span onClick={() => saves.saveCar(details)} className={Styles.heart}>{savedCars.find(x => x.year === details.year && x.make === details.make && x.model === details.model) ? "✭" : "✩"}</span>
             <VehicleDetails {...details} />
             <PartsList {...saves}{...details}/>
         </Loading>
     )
 }
 
-export default Research
+export default withContext(Research)

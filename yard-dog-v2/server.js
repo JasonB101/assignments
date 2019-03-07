@@ -14,6 +14,7 @@ app.use(express.json())
 app.use("/auth", require("./routes/auth"))
 app.use("/api/research", require("./routes/research"))
 app.use("/api/save", require("./routes/save"))
+app.use("/api/delete", require("./routes/delete"))
 app.use("/api/saved", require("./routes/saved"))
 
 // Connect to colection

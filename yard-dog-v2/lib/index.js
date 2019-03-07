@@ -35,7 +35,7 @@ module.exports = (() => {
                 const rawParts = JSON.parse(response.body).findCompletedItemsResponse[0].searchResult[0].item || []
                 const parts = rawParts.map(x => {
                     return {
-                        partID: x.itemId,
+                        partID: x.itemId[0],
                         title: x.title[0],
                         price: Number(x.sellingStatus[0].currentPrice[0].__value__),
                         imgurl: x.galleryURL ? x.galleryURL[0] : null,

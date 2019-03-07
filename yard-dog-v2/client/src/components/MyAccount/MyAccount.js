@@ -2,12 +2,15 @@ import React from 'react'
 import {withContext} from "../DataHandler"
 import Styles from "./MyAccount.module.css"
 
-function MyAccount(props) {
+class MyAccount extends React.Component {
+    
+    render(){
     return (
         <div>
-            <p className={Styles.greeting}>{`Welcome to your account ${props.user.fname}!`}</p>
+            <p className={Styles.greeting}>{`Welcome to your account ${this.props.user.fname}!`}</p>
         </div>
     )
+}
 }
 
 export default withContext(MyAccount)

@@ -1,27 +1,39 @@
 import React from 'react'
 import Styles from "./Part.module.css"
-import {Switch, Route} from "react-router-dom"
+import { Switch } from "react-router-dom"
+import {withContext} from "../DataHandler"
 
-function Part(props) {
-    return (
-        <div className={Styles.partWrapper}>
-            <div className={Styles.part}>
-            <img className={Styles.image} src={props.imgurl ? props.imgurl : null} alt="Item" ></img>
-            <div className={Styles.wrapper}>
-            <h5 className={Styles.title}>{props.title}</h5>
-            <br></br>
-            <Switch>
-                <Route path="/research" render={() => <span onClick={() => props.savePart(props.partID)} className={Styles.heart}>❤️</span>}/>
-            </Switch>
-            
-            <p className={Styles.price}>Sold for: ${props.price}</p>
+class Part extends React.Component {
+    
+    render() {
+        const saved = this.props.savedParts.find(x => x.partID === this.props.partID);
+        return (
+            <div className={Styles.partWrapper}>
+                <div className={Styles.part}>
+                    <img className={Styles.image} src={this.props.imgurl ? this.props.imgurl : null} alt="Item" ></img>
+                    <div className={Styles.wrapper}>
+                        <h5 className={Styles.title}>{this.props.title}</h5>
+                        <br></br>
+                        <Switch>
+                            <span onClick={() => {
+                                if (!saved) {
+                                    this.props.savePart(this.props.partID)
+                                } else {
+                                    this.props.delPart(this.props.partID)
+                                }
+                            }}
+                                className={Styles.heart} > {saved ? "✭" : "✩" }</span>
+                        </Switch>
+
+                        <p className={Styles.price}>Sold for: ${this.props.price}</p>
+                    </div>
+                </div>
+                <hr></hr>
             </div>
-            </div>
-            <hr></hr>
-        </div>
-    )
+        )
+    }
 }
 
-export default Part
+export default withContext(Part)
 
-///////After save, the heart disappears so you cannot save again
+///////After save, the heart disappears so you cannot save again ✭ ✭ ✭ ✭ ✭ ✭ ✭ 

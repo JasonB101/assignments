@@ -5,7 +5,7 @@ const Car = require("../models/car")
 
 saveRouter.post("/part", (req, res, next) => {
 
-    Part.findOne({ partID: `${req.body.partID}` }, (err, existingPart) => {
+    Part.findOne({ partID: `${req.body.partID}`, user: `${req.user._id}` }, (err, existingPart) => {
         if (err) {
             res.status(500)
             return next(err)
@@ -26,7 +26,7 @@ saveRouter.post("/part", (req, res, next) => {
 
 saveRouter.post("/car", (req, res, next) => {
 
-    Car.findOne({ year: `${req.body.year}`, make: `${req.body.make}`, model: `${req.body.model}` }, (err, existingCar) => {
+    Car.findOne({ year: `${req.body.year}`, make: `${req.body.make}`, model: `${req.body.model}`, user: `${req.user._id}` }, (err, existingCar) => {
         if (err) {
             res.status(500)
             return next(err)

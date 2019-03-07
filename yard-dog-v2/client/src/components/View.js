@@ -6,7 +6,9 @@ import Signup from "./Auth/Signup"
 import Login from "./Auth/Login"
 import MyAccount from "./MyAccount/MyAccount"
 import UserCars from "./UserCars/UserCars"
+import UserParts from "./UserParts/UserParts"
 import { Switch, Route } from "react-router-dom"
+import {withContext} from "./DataHandler"
 import axios from "axios"
 import ProtectedRoute from "./Auth/ProtectedRoute"
 const researchAxios = axios.create()
@@ -17,7 +19,7 @@ researchAxios.interceptors.request.use((config) => {
     return config;
 })
 
-export default class View extends Component {
+class View extends Component {
     constructor() {
         super()
         this.state = {
@@ -35,6 +37,7 @@ export default class View extends Component {
         }
         this.getData = this.getData.bind(this)
         this.savePart = this.savePart.bind(this)
+        this.delPart = this.delPart.bind(this)
         this.saveCar = this.saveCar.bind(this)
         this.researchFromHistory = this.researchFromHistory.bind(this)
     }
@@ -64,29 +67,44 @@ export default class View extends Component {
             return x.partID === id
         })
         researchAxios.post("/api/save/part", partData)
-            .then(() => {
-                this.setState(ps => ({
-                    current: {
-                        ...ps.current,
-                        parts: ps.current.parts.filter((x, i, a) => {
-                            return x.partID !== partData.partID
-                        })
-                    }
-                }))
+            .then((err) => {
+                this.props.getSavedParts()
+                if (err) {
+                 console.log(err)   
+                }
+
+            })
+    }
+    delPart(id) {
+        
+        researchAxios.delete(`/api/delete/part/${id}`)
+            .then((err) => {
+                this.props.getSavedParts()
+                if (err) {
+                 console.log(err)   
+                }
+
             })
     }
 
     saveCar(data) {
         const carData = data
-        delete carData.parts
         researchAxios.post("/api/save/car", carData)
-        console.log(carData)
+        .then((err) => {
+            this.props.getSavedCars()
+            if (err) {
+             console.log(err)   
+            }
+
+        })
     }
 
     researchFromHistory(vehicleDetails) {
         this.setState({
             current: { ...vehicleDetails }
-        })
+        }, this.getData(vehicleDetails))
+        
+        
     }
 
     render() {
@@ -97,13 +115,15 @@ export default class View extends Component {
                     <Route path="/auth/login" component={(props) => <Login {...this.state} {...props} />} />
                     <ProtectedRoute exact path="/research" component={() => <Landing {...this.state} handleClick={this.getData} />} />
                     <ProtectedRoute exact path="/myaccount" component={(props) => <MyAccount {...props} {...this.state} />} />
-                    <ProtectedRoute exact path="/myaccount/saves" component={(props) => <MyAccount {...props} {...this.state} />} />
+                    <ProtectedRoute exact path="/myaccount/saves" component={(props) => <MyAccount {...props} {...this.state}  />} />
                     <ProtectedRoute path="/myaccount/saves/cars" component={(props) => <UserCars handleClick={this.researchFromHistory} {...props}/>} />
-                    <ProtectedRoute path="/myaccount/saves/parts" component={(props) => <UserCars handleClick={this.researchFromHistory} {...props}/>} />
-                    <ProtectedRoute path="/research/results" component={() => <Research loading={this.state.loading} saves={{ savePart: this.savePart, saveCar: this.saveCar }} details={this.state.current} />} />
+                    <ProtectedRoute path="/myaccount/saves/parts" component={(props) => <UserParts {...props} saves={{ savePart: this.savePart, saveCar: this.saveCar, delPart: this.delPart }}/>} />
+                    <ProtectedRoute path="/research/results" component={() => <Research loading={this.state.loading} saves={{ savePart: this.savePart, saveCar: this.saveCar, delPart: this.delPart }} details={this.state.current} />} />
                     <Route path="/research/history" component={() => <History handleClick={this.researchFromHistory} details={this.state.searchHistory} />} />
                 </Switch>
             </div>
         )
     }
 }
+
+export default withContext(View)

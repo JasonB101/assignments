@@ -24,12 +24,11 @@
 }
 
 .heart{
-    position: absolute;
     right: 10px;
     cursor: pointer;
     float: right;
     width: fit-content;
     text-align: right;
-    font-size: 30px;
-    color: red;
+    font-size: 40px;
+    color: gold;
 }
